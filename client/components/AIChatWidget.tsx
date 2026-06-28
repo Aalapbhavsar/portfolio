@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import styles from './AIChatWidget.module.css';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL!;
 
 interface Message {
   role: 'user' | 'assistant';
