@@ -1,12 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import './admin.css';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
+  const pathname = usePathname();
   const [user, setUser] = useState<{ username: string; email: string } | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -39,7 +40,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <div className="admin-layout">
-      <nav className="admin-sidebar">
+      <nav className={`admin-sidebar ${isOpen ? 'open' : ''}`}>
         <div className="admin-sidebar-header">
           <span className="admin-logo">Aalap.</span>
           <span className="admin-badge">Admin</span>
@@ -48,7 +49,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <ul className="admin-menu">
           {menuItems.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} className="admin-menu-item">
+              <Link
+                href={item.href}
+                className={`admin-menu-item ${pathname === item.href ? 'active' : ''}`}
+                onClick={() => setIsOpen(false)}
+              >
                 {item.icon} {item.label}
               </Link>
             </li>

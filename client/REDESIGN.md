@@ -52,7 +52,7 @@ npm install
 2. **Set up environment variables:**
 Create a `.env.local` file in the `client` directory:
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_API_URL=https://portfolio-backend-ce0d.onrender.com
 ```
 
 3. **Start development server:**
