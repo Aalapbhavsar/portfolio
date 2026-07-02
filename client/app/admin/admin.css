@@ -1,6 +1,5 @@
 .admin-layout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
+  display: flex;
   min-height: 100vh;
   background: var(--bg-base);
   color: var(--text-primary);
@@ -131,6 +130,12 @@
   margin-left: 280px;
   padding: 2rem;
   overflow-y: auto;
+}
+
+.admin-layout::before {
+  content: '';
+  flex-shrink: 0;
+  width: 280px;
 }
 
 .admin-page-header {
